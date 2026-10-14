@@ -1,0 +1,23 @@
+<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>OpenRideSync Viewer · 登入</title>
+<style>:root{color-scheme:dark}body{margin:0;background:#10191d;color:#eef4f3;font:16px/1.7 system-ui}main{max-width:600px;margin:12vh auto;padding:32px}small{color:#9ee4cc;letter-spacing:.14em}h1{font-size:40px;line-height:1.2}p{color:#b7c5c7}button{font:inherit;padding:13px 24px;background:#9ee4cc;border:0;color:#13231e;cursor:pointer}button:disabled{opacity:.5}#status{min-height:80px;margin-top:32px;border-top:1px solid #3a4c50;padding-top:20px}</style>
+<main><small>OPENRIDESYNC VIEWER</small><h1>連結你的騎乘記錄</h1><p>使用原本 RoadSync 的同一個 Google 帳號。登入後請返回應用程式，車型與歷史旅程會自動下載至本機。</p><p>只讀取既有資料，不上傳或刪除旅程。應用程式會以 Windows 使用者加密保存登入狀態，授權失效時再請你重新登入。</p><button id="login" disabled>以 Google 帳號登入</button><p id="status" role="status">正在準備登入…</p></main>
+<script type="module">
+import{initializeApp}from'https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js';
+import{getAuth,setPersistence,inMemoryPersistence,GoogleAuthProvider,signInWithPopup,signOut}from'https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js';
+const config=__CONFIG__,button=document.querySelector('#login'),status=document.querySelector('#status');
+let auth;
+try{auth=getAuth(initializeApp(config.firebase));await setPersistence(auth,inMemoryPersistence);button.disabled=false;status.textContent='請使用 RoadSync 的同一個 Google 帳號。'}catch{status.textContent='無法準備登入。請確認網路，回應用程式重試。'}
+button.onclick=async()=>{
+ button.disabled=true;
+ try{
+  const provider=new GoogleAuthProvider();provider.setCustomParameters({prompt:'select_account'});
+  status.textContent='請在 Google 視窗完成登入。';
+  const result=await signInWithPopup(auth,provider),token=await result.user.getIdToken();
+  const response=await fetch('/token',{method:'POST',headers:{'Content-Type':'application/json','X-Viewer-Nonce':config.nonce},body:JSON.stringify({token,refreshToken:result.user.refreshToken})});
+  await signOut(auth);
+  if(!response.ok)throw new Error();
+  status.textContent='登入已交回應用程式。請返回 OpenRideSync Viewer 查看下載進度；可以關閉本頁。';
+ }catch{await signOut(auth).catch(()=>{});status.textContent='登入未完成或已逾時。請重試；若此視窗已失效，請回應用程式重新登入。';button.disabled=false;}
+};
+</script></html>
