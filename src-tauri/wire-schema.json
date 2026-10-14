@@ -1,0 +1,538 @@
+{
+  "ListModelCatalogsRequest": [
+    {
+      "name": "meter_generations",
+      "number": 1,
+      "type": "int32",
+      "repeated": true
+    },
+    {
+      "name": "only_own_country",
+      "number": 2,
+      "type": "bool",
+      "repeated": false
+    }
+  ],
+  "ListModelSeriesRequest": [
+    {
+      "name": "meter_generations",
+      "number": 1,
+      "type": "int32",
+      "repeated": true
+    },
+    {
+      "name": "model_series_labels",
+      "number": 2,
+      "type": "string",
+      "repeated": true
+    },
+    {
+      "name": "only_own_country",
+      "number": 3,
+      "type": "bool",
+      "repeated": false
+    }
+  ],
+  "ListModelsRequest": [
+    {
+      "name": "meter_generations",
+      "number": 1,
+      "type": "int32",
+      "repeated": true
+    },
+    {
+      "name": "model_labels",
+      "number": 2,
+      "type": "string",
+      "repeated": true
+    },
+    {
+      "name": "series_codes",
+      "number": 3,
+      "type": "string",
+      "repeated": true
+    },
+    {
+      "name": "country_code",
+      "number": 4,
+      "type": "string",
+      "repeated": false
+    }
+  ],
+  "ListModelCatalogsResponse": [
+    {
+      "name": "model_catalogs",
+      "number": 1,
+      "type": "ModelCatalog",
+      "repeated": true
+    }
+  ],
+  "ListModelSeriesResponse": [
+    {
+      "name": "model_series_list",
+      "number": 1,
+      "type": "ModelSeries",
+      "repeated": true
+    }
+  ],
+  "ListModelsResponse": [
+    {
+      "name": "models",
+      "number": 1,
+      "type": "Model",
+      "repeated": true
+    }
+  ],
+  "ModelCatalog": [
+    {
+      "name": "model",
+      "number": 1,
+      "type": "Model",
+      "repeated": false
+    },
+    {
+      "name": "model_count",
+      "number": 2,
+      "type": "int32",
+      "repeated": false
+    }
+  ],
+  "ModelSeries": [
+    {
+      "name": "models",
+      "number": 1,
+      "type": "Model",
+      "repeated": true
+    }
+  ],
+  "Model": [
+    {
+      "name": "model_label",
+      "number": 1,
+      "type": "string",
+      "repeated": false
+    },
+    {
+      "name": "model_series_label",
+      "number": 2,
+      "type": "string",
+      "repeated": false
+    },
+    {
+      "name": "model_name",
+      "number": 3,
+      "type": "ModelName",
+      "repeated": false
+    },
+    {
+      "name": "model_years",
+      "number": 4,
+      "type": "int32",
+      "repeated": true
+    },
+    {
+      "name": "displacement",
+      "number": 5,
+      "type": "int32",
+      "repeated": false
+    },
+    {
+      "name": "vehicle_codes",
+      "number": 6,
+      "type": "VehicleCode",
+      "repeated": true
+    },
+    {
+      "name": "meter",
+      "number": 7,
+      "type": "Meter",
+      "repeated": false
+    },
+    {
+      "name": "images",
+      "number": 8,
+      "type": "Image",
+      "repeated": true
+    },
+    {
+      "name": "updated_at",
+      "number": 9,
+      "type": "int64",
+      "repeated": false
+    }
+  ],
+  "ModelName": [
+    {
+      "name": "display_name",
+      "number": 1,
+      "type": "Name",
+      "repeated": false
+    },
+    {
+      "name": "default_name",
+      "number": 2,
+      "type": "Name",
+      "repeated": false
+    }
+  ],
+  "Name": [
+    {
+      "name": "full_name",
+      "number": 1,
+      "type": "string",
+      "repeated": false
+    },
+    {
+      "name": "name_parts",
+      "number": 2,
+      "type": "NamePart",
+      "repeated": true
+    }
+  ],
+  "NamePart": [
+    {
+      "name": "value",
+      "number": 1,
+      "type": "string",
+      "repeated": false
+    },
+    {
+      "name": "is_official_part",
+      "number": 2,
+      "type": "bool",
+      "repeated": false
+    }
+  ],
+  "VehicleCode": [
+    {
+      "name": "model_code",
+      "number": 1,
+      "type": "string",
+      "repeated": false
+    },
+    {
+      "name": "series_code",
+      "number": 2,
+      "type": "string",
+      "repeated": false
+    }
+  ],
+  "Meter": [
+    {
+      "name": "type",
+      "number": 1,
+      "type": "int32",
+      "repeated": false
+    },
+    {
+      "name": "generation",
+      "number": 2,
+      "type": "int32",
+      "repeated": false
+    },
+    {
+      "name": "full_supported_language_codes",
+      "number": 3,
+      "type": "string",
+      "repeated": true
+    },
+    {
+      "name": "partially_supported_language_codes",
+      "number": 4,
+      "type": "string",
+      "repeated": true
+    },
+    {
+      "name": "not_supported_language_codes",
+      "number": 5,
+      "type": "string",
+      "repeated": true
+    }
+  ],
+  "Image": [
+    {
+      "name": "id",
+      "number": 1,
+      "type": "string",
+      "repeated": false
+    },
+    {
+      "name": "description",
+      "number": 2,
+      "type": "ModelImageDescription",
+      "repeated": false
+    }
+  ],
+  "ModelImageDescription": [
+    {
+      "name": "color",
+      "number": 1,
+      "type": "ModelColor",
+      "repeated": false
+    },
+    {
+      "name": "direction",
+      "number": 2,
+      "type": "int32",
+      "repeated": false
+    },
+    {
+      "name": "is_default",
+      "number": 3,
+      "type": "bool",
+      "repeated": false
+    }
+  ],
+  "ModelColor": [
+    {
+      "name": "category",
+      "number": 1,
+      "type": "int32",
+      "repeated": false
+    },
+    {
+      "name": "code",
+      "number": 2,
+      "type": "string",
+      "repeated": false
+    }
+  ],
+  "GetImageBinaryRequest": [
+    {
+      "name": "image_id",
+      "number": 1,
+      "type": "string",
+      "repeated": false
+    }
+  ],
+  "ImageBinary": [
+    {
+      "name": "id",
+      "number": 1,
+      "type": "string",
+      "repeated": false
+    },
+    {
+      "name": "binary",
+      "number": 2,
+      "type": "bytes",
+      "repeated": false
+    }
+  ],
+  "ListDailyTripsRequest": [
+    {
+      "name": "offset_from_utc",
+      "number": 1,
+      "type": "sint32",
+      "repeated": false
+    },
+    {
+      "name": "start_date",
+      "number": 2,
+      "type": "uint64",
+      "repeated": false
+    },
+    {
+      "name": "trips_count",
+      "number": 3,
+      "type": "int32",
+      "repeated": false
+    }
+  ],
+  "ListDailyTripsResponse": [
+    {
+      "name": "trips_summary",
+      "number": 1,
+      "type": "TripsSummary",
+      "repeated": false
+    },
+    {
+      "name": "trips",
+      "number": 2,
+      "type": "DailyTrips",
+      "repeated": true
+    }
+  ],
+  "DailyTrips": [
+    {
+      "name": "trip_date",
+      "number": 1,
+      "type": "uint64",
+      "repeated": false
+    },
+    {
+      "name": "trip_uuids",
+      "number": 2,
+      "type": "string",
+      "repeated": true
+    },
+    {
+      "name": "user_id",
+      "number": 3,
+      "type": "string",
+      "repeated": false
+    },
+    {
+      "name": "total_distance",
+      "number": 4,
+      "type": "float",
+      "repeated": false
+    },
+    {
+      "name": "total_time",
+      "number": 5,
+      "type": "uint64",
+      "repeated": false
+    },
+    {
+      "name": "avg_speed",
+      "number": 6,
+      "type": "float",
+      "repeated": false
+    },
+    {
+      "name": "vehicle_series_codes",
+      "number": 7,
+      "type": "string",
+      "repeated": true
+    },
+    {
+      "name": "vehicle_display_name",
+      "number": 8,
+      "type": "string",
+      "repeated": true
+    },
+    {
+      "name": "start_time",
+      "number": 9,
+      "type": "uint64",
+      "repeated": false
+    },
+    {
+      "name": "end_time",
+      "number": 10,
+      "type": "uint64",
+      "repeated": false
+    }
+  ],
+  "TripsSummary": [
+    {
+      "name": "total_distance",
+      "number": 1,
+      "type": "float",
+      "repeated": false
+    },
+    {
+      "name": "total_time",
+      "number": 2,
+      "type": "uint64",
+      "repeated": false
+    },
+    {
+      "name": "total_drive_day",
+      "number": 3,
+      "type": "uint32",
+      "repeated": false
+    }
+  ],
+  "ListTripDetailsRequest": [
+    {
+      "name": "trip_uuids",
+      "number": 1,
+      "type": "string",
+      "repeated": true
+    }
+  ],
+  "ListTripDetailsResponse": [
+    {
+      "name": "daily_trip_details",
+      "number": 1,
+      "type": "TripDetail",
+      "repeated": true
+    },
+    {
+      "name": "total_time",
+      "number": 2,
+      "type": "uint64",
+      "repeated": false
+    },
+    {
+      "name": "avg_speed",
+      "number": 3,
+      "type": "float",
+      "repeated": false
+    },
+    {
+      "name": "total_distance",
+      "number": 4,
+      "type": "float",
+      "repeated": false
+    }
+  ],
+  "TripDetail": [
+    {
+      "name": "trip_uuid",
+      "number": 1,
+      "type": "string",
+      "repeated": false
+    },
+    {
+      "name": "avg_speed",
+      "number": 4,
+      "type": "float",
+      "repeated": false
+    },
+    {
+      "name": "total_distance",
+      "number": 5,
+      "type": "float",
+      "repeated": false
+    },
+    {
+      "name": "trip_locations",
+      "number": 6,
+      "type": "TripLocation",
+      "repeated": true
+    }
+  ],
+  "TripLocation": [
+    {
+      "name": "id",
+      "number": 1,
+      "type": "string",
+      "repeated": false
+    },
+    {
+      "name": "coordinates",
+      "number": 2,
+      "type": "Coord",
+      "repeated": false
+    },
+    {
+      "name": "timestamp",
+      "number": 3,
+      "type": "uint64",
+      "repeated": false
+    },
+    {
+      "name": "is_coarse",
+      "number": 4,
+      "type": "bool",
+      "repeated": false
+    }
+  ],
+  "Coord": [
+    {
+      "name": "lat",
+      "number": 1,
+      "type": "double",
+      "repeated": false
+    },
+    {
+      "name": "lon",
+      "number": 2,
+      "type": "double",
+      "repeated": false
+    }
+  ]
+}

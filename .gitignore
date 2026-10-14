@@ -1,0 +1,41 @@
+# Dependencies and build output
+node_modules/
+dist/
+release/
+src-tauri/target/
+src-tauri/gen/
+src-tauri/generated/
+# Never publish service settings, accounts, measurements or previews
+private/
+.preview/
+.env
+.env.*
+!.env.example
+service-config.json
+service-config.pending
+*.local.json
+config.json
+session.bin
+session.pending
+snapshot-*.json
+latest.json
+latest.pending
+last-operation.json
+*.log
+*.har
+*.pcap
+*.pcapng
+*.apk
+*.aab
+*.jks
+*.keystore
+*.pem
+*.key
+# Local tools and editor state
+__pycache__/
+*.pyc
+.venv/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

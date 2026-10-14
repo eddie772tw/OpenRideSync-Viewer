@@ -1,0 +1,12 @@
+{
+  "apk": {
+    "versionCode": 309,
+    "versionName": "26.8.10",
+    "package": "com.honda.ms.dm.sab",
+    "baseApkSha256": "94facfbed5044856dc65173b5a287a25418c301ca192fcd59722342c9a004cbb"
+  },
+  "keyRevision": "roadsync-26.8.10-309",
+  "keyRevisionNote": "Project-assigned identifier; no separate upstream API-key version is exposed.",
+  "hondaApiKeySha256": "ed229bfb2910fcf4540967b94fa6255f268183f126891b4ec2669d205bbf0fd8",
+  "firebaseApiKeySha256": "d3b040469ae2e7122601a339253a1d1ee3213c12e6f92a336149f40125f31b22"
+}

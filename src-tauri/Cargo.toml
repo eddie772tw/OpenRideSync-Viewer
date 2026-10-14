@@ -1,0 +1,35 @@
+[package]
+name = "open-roadsync-viewer"
+version = "0.1.0"
+description = "Read-only RoadSync vehicle and journey viewer"
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/eddie772tw/OpenRideSync-Viewer"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+axum = "0.8"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+jsonwebtoken = "9"
+tonic = { version = "0.14", features = ["tls-ring", "tls-native-roots"] }
+prost = "0.14"
+prost-types = "0.14"
+prost-reflect = { version = "0.16", features = ["serde"] }
+sha2 = "0.10"
+base64 = "0.22"
+uuid = { version = "1", features = ["v4"] }
+webbrowser = "1"
+chrono = { version = "0.4", features = ["serde"] }
+zeroize = "1"
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.62.2", features = ["Win32_Foundation", "Win32_Security_Cryptography"] }
+
+[profile.release]
+strip = true
